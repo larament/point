@@ -49,7 +49,7 @@ final class RolePolicy
      */
     public function delete(User $user, Role $role): bool
     {
-        return $user->can('delete_role');
+        return $user->can('delete_role') && ! $role->id === 1; // Super Admin cannot be deleted
     }
 
     /**
@@ -57,6 +57,6 @@ final class RolePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_role');
+        return false; // Bulk delete is not allowed
     }
 }
