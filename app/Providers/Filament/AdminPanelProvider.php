@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\Login;
+use App\Models\Menu;
 use Awcodes\Curator\CuratorPlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Datlechin\FilamentMenuBuilder\FilamentMenuBuilderPlugin;
@@ -92,8 +93,11 @@ final class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentShieldPlugin::make(),
-                CuratorPlugin::make()->navigationGroup(__('admin.nav_groups.content')),
-                FilamentMenuBuilderPlugin::make()->navigationGroup(__('admin.nav_groups.settings')),
+                CuratorPlugin::make()
+                    ->navigationGroup(__('admin.nav_groups.content')),
+                FilamentMenuBuilderPlugin::make()
+                    ->navigationGroup(__('admin.nav_groups.settings'))
+                    ->usingMenuModel(Menu::class),
                 FilamentFabricatorPlugin::make(),
             ]);
     }
