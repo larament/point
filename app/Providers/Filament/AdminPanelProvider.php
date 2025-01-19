@@ -31,8 +31,6 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
-use Z3d0X\FilamentFabricator\FilamentFabricatorPlugin;
 
 final class AdminPanelProvider extends PanelProvider
 {
@@ -40,7 +38,6 @@ final class AdminPanelProvider extends PanelProvider
     {
         $this->translateComponentsLabel();
         $this->configureTables();
-        $this->configureFabricator();
     }
 
     public function panel(Panel $panel): Panel
@@ -98,7 +95,6 @@ final class AdminPanelProvider extends PanelProvider
                 FilamentMenuBuilderPlugin::make()
                     ->navigationGroup(__('admin.nav_groups.settings'))
                     ->usingMenuModel(Menu::class),
-                FilamentFabricatorPlugin::make(),
             ]);
     }
 
@@ -116,12 +112,5 @@ final class AdminPanelProvider extends PanelProvider
         Table::configureUsing(function (Table $table): void {
             $table->paginationPageOptions([10, 20, 30, 50]);
         });
-    }
-
-    private function configureFabricator(): void
-    {
-        FilamentFabricator::registerSchemaSlot('sidebar.after', [
-            // Add your components here
-        ]);
     }
 }
