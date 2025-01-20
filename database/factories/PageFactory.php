@@ -20,7 +20,6 @@ final class PageFactory extends Factory
     {
         return [
             'title' => fake()->sentence(),
-            'slug' => fake()->slug(),
             'content' => fake()->paragraph(),
             'is_visible' => fake()->boolean(),
         ];
