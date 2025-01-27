@@ -60,7 +60,7 @@ trait CanUploadFromUrl
             $name
         );
 
-        if (is_media_resizable($file->extension())) {
+        if (is_media_resizable($file->getMimeType())) {
             $image = Image::make($file->path());
             $image->orientate();
             $width = $image->width();
