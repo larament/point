@@ -1,11 +1,16 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "larament/point",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Larament Point is the perfect starting point for your next Laravel/Filament project.",
     "keywords": [
         "laravel",
-        "framework"
+        "framework",
+        "larament",
+        "filamentphp",
+        "filament",
+        "boilerplate",
+        "starter-kit"
     ],
     "license": "MIT",
     "require": {
